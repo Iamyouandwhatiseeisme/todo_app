@@ -36,6 +36,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   get_it: ^7.6.7
+  provider: ^6.0.5
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,18 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts: 
+    - family: Telegraf
+      fonts: 
+        - asset: assets\fonts\Telegraf UltraBold 800.otf
+          weight: 800
+        - asset: assets\fonts\Telegraf Regular 400.otf
+          weight: 400
+        - asset: assets\fonts\Telegraf UltraLight 200.otf
+          weight: 200
+
+  assets:
+    - assets/svg/icons/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

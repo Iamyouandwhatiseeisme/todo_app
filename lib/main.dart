@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/data/data.dart';
 import 'package:todo_app/data/get_it_methods.dart';
 import 'package:todo_app/presentation/widgets/navigation/navigation_client.dart';
+
+import 'presentation/presentation_widgets.dart';
 
 final sl = GetIt.instance;
 
@@ -15,14 +19,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Todo App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      routes: sl.get<NavigatorClient>().routes,
+    return ChangeNotifierProvider<ThemeProvider>(
+      create: (BuildContext context) => ThemeProvider(),
+      child: Builder(builder: (context) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Todo App',
+          theme: context.watch<ThemeProvider>().currentTheme == AppTheme.dark
+              ? lightTheme
+              : darkTheme,
+          routes: sl.get<NavigatorClient>().routes,
+        );
+      }),
     );
   }
 }
