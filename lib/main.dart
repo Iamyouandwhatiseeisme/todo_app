@@ -3,8 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/data/data.dart';
 import 'package:todo_app/data/get_it_methods.dart';
-import 'package:todo_app/presentation/widgets/navigation/navigation_client.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'presentation/presentation_widgets.dart';
 
 final sl = GetIt.instance;
@@ -23,6 +22,8 @@ class MyApp extends StatelessWidget {
       create: (BuildContext context) => ThemeProvider(),
       child: Builder(builder: (context) {
         return MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           debugShowCheckedModeBanner: false,
           title: 'Todo App',
           theme: context.watch<ThemeProvider>().currentTheme == AppTheme.dark

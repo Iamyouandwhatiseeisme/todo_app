@@ -1,0 +1,13 @@
+{
+    "@@locale": "ka",
+    "upTodo" :  "upTodo",
+    "createDailyRoutine" : "შეიქმენი დღიური რუტინა",
+    "organizeYourTasks": "დააორგანიზე შენი თასქები",
+    "manageYourTasks": "გაანაწილე თასქები",
+    "createDailyRoutineDescription" : "You can easily manage all of your daily\n tasks in DoMe for free",
+    "organizeYourTasksDescription": "Organize your tasks",
+    "manageYourTasksDescription": "Manage your tasks",
+    "skip" : "SKIP"
+
+
+}

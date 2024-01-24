@@ -1,0 +1,13 @@
+{
+    "@@locale": "en",
+    "upTodo" :  "upTodo",
+    "createDailyRoutine" : "Create daily routine",
+    "organizeYourTasks": "Organize your tasks",
+    "manageYourTasks": "Manage your tasks",
+    "createDailyRoutineDescription" : "In Uptodo  you can create your\n personalized routine to stay productive",
+    "organizeYourTasksDescription": "You can organize your daily tasks by adding\n your tasks into separate categories",
+    "manageYourTasksDescription": "You can easily manage all of your daily\n tasks in DoMe for free",
+    "skip" : "SKIP"
+
+    
+    }
