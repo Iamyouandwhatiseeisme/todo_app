@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/bloc/cubit/fetch_tasks_cubit.dart';
 import 'package:todo_app/data/data.dart';
 import 'package:todo_app/data/get_it_methods.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,15 +23,18 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<ThemeProvider>(
       create: (BuildContext context) => ThemeProvider(),
       child: Builder(builder: (context) {
-        return MaterialApp(
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          debugShowCheckedModeBanner: false,
-          title: 'Todo App',
-          theme: context.watch<ThemeProvider>().currentTheme == AppTheme.dark
-              ? lightTheme
-              : darkTheme,
-          routes: sl.get<NavigatorClient>().routes,
+        return BlocProvider(
+          create: (context) => FetchTasksCubit()..fetchTasks(),
+          child: MaterialApp(
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            debugShowCheckedModeBanner: false,
+            title: 'Todo App',
+            theme: context.watch<ThemeProvider>().currentTheme == AppTheme.dark
+                ? lightTheme
+                : darkTheme,
+            routes: sl.get<NavigatorClient>().routes,
+          ),
         );
       }),
     );
