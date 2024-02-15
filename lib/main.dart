@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/bloc/cubit/cubits.dart';
 import 'package:todo_app/bloc/cubit/fetch_tasks_cubit.dart';
 import 'package:todo_app/data/data.dart';
 import 'package:todo_app/data/get_it_methods.dart';
@@ -23,8 +24,18 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<ThemeProvider>(
       create: (BuildContext context) => ThemeProvider(),
       child: Builder(builder: (context) {
-        return BlocProvider(
-          create: (context) => FetchTasksCubit()..fetchTasks(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => FetchTasksCubit()..fetchTasks(),
+            ),
+            BlocProvider(
+              create: (context) => BottomNavigationBarCubit(),
+            ),
+            BlocProvider(
+              create: (context) => PostTasksCubit(),
+            ),
+          ],
           child: MaterialApp(
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
