@@ -10,3 +10,5 @@ export 'package:todo_app/presentation/pages/index_page/widgets/no_tasks_yet.dart
 export 'package:todo_app/data/remote_data_source/tasks_data_source.dart';
 export 'package:todo_app/presentation/pages/index_page/widgets/day_difference_label.dart';
 export 'package:todo_app/presentation/pages/index_page/widgets/task_card.dart';
+export 'package:todo_app/presentation/pages/index_page/widgets/add_task_dialog.dart';
+export 'package:todo_app/presentation/pages/index_page/widgets/task_text_field.dart';

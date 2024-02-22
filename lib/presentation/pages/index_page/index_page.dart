@@ -41,16 +41,7 @@ class _IndexPageState extends State<IndexPage> {
                     borderRadius: BorderRadius.circular(100),
                     side: BorderSide(width: 3, color: containerColor)),
                 onPressed: () {
-                  BlocProvider.of<PostTasksCubit>(context).postTasks(
-                      taskModel: TaskModel(
-                          title: 'title',
-                          description: 'description',
-                          time: 'time',
-                          priority: 5,
-                          id: 'id',
-                          text: 'text',
-                          completed: true,
-                          date: DateTime.now()));
+                  addTask(context);
                 },
                 elevation: 0,
                 backgroundColor: containerColor,
@@ -72,24 +63,28 @@ class _IndexPageState extends State<IndexPage> {
               }
             },
             builder: (context, state) {
-              if (state.props.isNotEmpty || state is FetchTasksLoaded) {
-                return Center(
-                    child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: ListView.separated(
-                      itemBuilder: (context, index) {
-                        return TaskCard(
-                            index: index, listToDisplay: listToDisplay);
-                      },
-                      separatorBuilder: (context, index) {
-                        return const SizedBox(
-                          height: 20,
-                        );
-                      },
-                      itemCount: listToDisplay.length),
-                ));
+              if (state is FetchTasksLoaded) {
+                if (state.listOfTasks.isNotEmpty) {
+                  return Center(
+                      child: Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: ListView.separated(
+                        itemBuilder: (context, index) {
+                          return TaskCard(
+                              index: index, listToDisplay: listToDisplay);
+                        },
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(
+                            height: 20,
+                          );
+                        },
+                        itemCount: listToDisplay.length),
+                  ));
+                } else {
+                  return const Center(child: NoTasksYet());
+                }
               } else if (state is FetchTasksLoading) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else {
                 return const Center(
                   child: NoTasksYet(),

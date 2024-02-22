@@ -4,8 +4,9 @@ import '../data.dart';
 import 'package:http/http.dart' as http;
 
 class TasksDataSource {
+  final String targetUri = 'http://192.168.100.13:8080/tasks';
   Future<List<TaskModel>> fetchTasks() async {
-    final url = Uri.parse('http://192.168.100.11:8080/tasks');
+    final url = Uri.parse(targetUri);
 
     // Replace with your server URL
     try {
@@ -31,7 +32,7 @@ class TasksDataSource {
       required String title,
       required int priority,
       required String date}) async {
-    final url = Uri.parse('http://192.168.100.11:8080/tasks');
+    final url = Uri.parse(targetUri);
 
     Map<String, dynamic> requestBody = {
       "text": text,
